@@ -16,9 +16,9 @@ public class App extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        Stage stage = new Stage(StageStyle.TRANSPARENT);
+    public void start(Stage stage) throws Exception {
         Scene scene = new Scene(new FXMLLoader(getClass().getResource("/Main.fxml")).load());
+        stage.initStyle(StageStyle.DECORATED);
         stage.setScene(scene);
         stage.show();
     }

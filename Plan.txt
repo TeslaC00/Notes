@@ -1,8 +1,8 @@
 Done :-
-A simple note-taking app
+Yellow color in the background
 
 Current :-
-Yellow color in the background
+A simple note-taking app
 "Notes ~~~" show be displayed in cursive on plain notes page
 Notes are short without multiple pages
 
