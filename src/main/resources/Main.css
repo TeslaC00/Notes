@@ -1,0 +1,13 @@
+#Main-TextArea{
+    -fx-text-fill: black;
+    -fx-font-size: 1.8em;
+    -fx-font-family: "Ink Free";
+    -fx-control-inner-background: lightyellow;
+}
+
+#Main-Text{
+    -fx-font-family: "Ink Free";
+    -fx-font-size: 2em;
+    -fx-background-color: yellow;
+    -fx-text-alignment: center;
+}

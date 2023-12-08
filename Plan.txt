@@ -1,0 +1,11 @@
+Done :-
+A simple note-taking app
+
+Current :-
+Yellow color in the background
+"Notes ~~~" show be displayed in cursive on plain notes page
+Notes are short without multiple pages
+
+Later :-
+Multiple notes
+List of notes
