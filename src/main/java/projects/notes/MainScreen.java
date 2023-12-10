@@ -53,15 +53,13 @@ public class MainScreen implements Initializable {
         if (notes.isEmpty()) {
             notes.add(note);
             currentNoteIndex = 0;
-            notesComboBox.getItems().add(note);
-            notesComboBox.getSelectionModel().select(note);
         } else {
             updateCurrentNote();
             notes.add(note);
             currentNoteIndex = notes.indexOf(note);
-            notesComboBox.getItems().add(note);
-            notesComboBox.getSelectionModel().select(note);
         }
+        notesComboBox.getItems().add(note);
+        notesComboBox.getSelectionModel().select(note);
         showNote(currentNoteIndex);
     }
 
