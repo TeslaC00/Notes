@@ -5,14 +5,8 @@ Close Button
 Save and load note(only one note)
 
 Current :-
-A simple note-taking app
-Notes are short without multiple pages
-
-Later :-
 Multiple notes
 List of notes
 Save and load multiple notes
 
-
-
-//    Currently works but the combobox is not rendering correctly sometimes breaks the program
+Later :-
