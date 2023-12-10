@@ -1,13 +1,31 @@
-#Main-TextArea{
-    -fx-text-fill: black;
-    -fx-font-size: 1.8em;
-    -fx-font-family: "Ink Free";
-    -fx-control-inner-background: lightyellow;
+.main {
+    -fx-background-color: yellow;
+    -fx-background-radius: 10;
 }
 
-#Main-Text{
-    -fx-font-family: "Ink Free";
-    -fx-font-size: 2em;
-    -fx-background-color: yellow;
-    -fx-text-alignment: center;
+#titleTextField {
+    -fx-font-size: 1.5em;
+    -fx-font-weight: bold;
+    -fx-font-family: "Fira Code";
+    /*-fx-border-width: 2;*/
+    -fx-focus-color: transparent;
 }
+
+#mainTextArea {
+    -fx-font-size: 1.5em;
+    -fx-font-family: "Ink Free";
+    -fx-control-inner-background: lightyellow;
+    /*-fx-border-width: 2;*/
+    -fx-focus-color: transparent;
+}
+
+#closeButton {
+    -fx-background-radius: 0 10 0 0;
+    -fx-font-size: 14pt;
+    -fx-background-color: transparent;
+}
+
+#closeButton:hover {
+    -fx-background-color: red;
+}
+

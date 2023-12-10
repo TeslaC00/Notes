@@ -1,11 +1,14 @@
 Done :-
 Yellow color in the background
+"Notes ~~~" show be displayed in cursive on plain notes page
+Close Button
+Save and load note(only one note)
 
 Current :-
 A simple note-taking app
-"Notes ~~~" show be displayed in cursive on plain notes page
 Notes are short without multiple pages
 
 Later :-
 Multiple notes
 List of notes
+Save and load multiple notes
