@@ -3,30 +3,13 @@ package projects.notes;
 import java.io.Serial;
 import java.io.Serializable;
 
-public class Note implements Serializable {
+public record Note(String title, String description) implements Serializable {
+
     @Serial
-    private static final long serialVersionUID = 1;
-    private String title;
-    private String description;
+    private static final long serialVersionUID = 1L;
 
-    public Note(String title, String description) {
-        this.title = title;
-        this.description = description;
-    }
-
-    public String getTitle() {
+    @Override
+    public String toString() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 }

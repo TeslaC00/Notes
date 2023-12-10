@@ -15,8 +15,44 @@
     -fx-font-size: 1.5em;
     -fx-font-family: "Ink Free";
     -fx-control-inner-background: lightyellow;
+    -fx-text-fill: darkblue;
     /*-fx-border-width: 2;*/
     -fx-focus-color: transparent;
+}
+
+#notesComboBox{
+    -fx-background-color: yellow;
+    -fx-font-size: 12pt;
+    -fx-text-fill: darkblue;
+}
+
+#notesComboBox .list-cell{
+    -fx-background-color: yellow;
+    -fx-font-size: 10pt;
+    -fx-text-fill: darkblue;
+
+}
+
+#notesComboBox .list-cell:hover{
+    -fx-background-color: white;
+}
+
+#deleteNoteButton {
+    -fx-font-size: 14pt;
+    -fx-background-color: transparent;
+}
+
+#deleteNoteButton:hover{
+    -fx-background-color: gray;
+}
+
+#addNoteButton {
+    -fx-font-size: 14pt;
+    -fx-background-color: transparent;
+}
+
+#addNoteButton:hover{
+    -fx-background-color: green;
 }
 
 #closeButton {

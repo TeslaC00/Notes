@@ -12,3 +12,7 @@ Later :-
 Multiple notes
 List of notes
 Save and load multiple notes
+
+
+
+//    Currently works but the combobox is not rendering correctly sometimes breaks the program

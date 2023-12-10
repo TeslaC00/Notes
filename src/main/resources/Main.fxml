@@ -2,21 +2,21 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="500.0" prefWidth="400.0" styleClass="main"
-            stylesheets="@Main.css" xmlns="http://javafx.com/javafx/20.0.1"
-            fx:controller="projects.notes.MainScreen">
-    <TextArea id="mainTextArea" fx:id="mainTextArea" layoutY="4.0" prefHeight="400.0" prefWidth="400.0" wrapText="true"
-              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="400.0" styleClass="main" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projects.notes.MainScreen">
+    <TextArea id="mainTextArea" fx:id="mainTextArea" layoutY="4.0" prefHeight="400.0" prefWidth="400.0" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
     </TextArea>
-    <TextField fx:id="titleTextField" layoutY="1.0" prefHeight="50.0" prefWidth="250.0" promptText="Notes ~~~"
-               AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0"/>
-    <Button id="closeButton" fx:id="closeButton" alignment="TOP_RIGHT" layoutX="312.0" layoutY="35.0"
-            mnemonicParsing="false" text="X" AnchorPane.rightAnchor="-11.0" AnchorPane.topAnchor="0.0">
+    <TextField fx:id="titleTextField" layoutY="1.0" prefHeight="50.0" prefWidth="250.0" promptText="Notes ~~~" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+    <Button id="closeButton" fx:id="closeButton" alignment="TOP_RIGHT" layoutX="312.0" layoutY="35.0" mnemonicParsing="false" text="X" AnchorPane.rightAnchor="-11.0" AnchorPane.topAnchor="0.0">
     </Button>
+    <Button id="deleteNoteButton" fx:id="deleteNoteButton" layoutX="326.0" mnemonicParsing="false" text="V" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="0.0" />
+    <Button id="addNoteButton" fx:id="addNoteButton" layoutX="278.0" mnemonicParsing="false" text="+" AnchorPane.topAnchor="0.0" />
+    <ComboBox id="notesComboBox" fx:id="notesComboBox" layoutX="283.0" layoutY="45.0" prefHeight="30.0" prefWidth="110.0" promptText="Notes List" visibleRowCount="5" AnchorPane.rightAnchor="0.0" />
     <padding>
-        <Insets bottom="10.0" left="10.0" right="10.0"/>
+        <Insets bottom="10.0" left="10.0" right="10.0" />
     </padding>
 </AnchorPane>
