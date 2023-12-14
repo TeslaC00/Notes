@@ -65,7 +65,7 @@ public class SQLiteDataManager implements DataManager {
 
     private void clearTable() {
         try (Statement statement = connection.createStatement()) {
-            String sql = "DELETE FROM notes";
+            @SuppressWarnings("SqlWithoutWhere") String sql = "DELETE FROM notes";
             statement.executeUpdate(sql);
         } catch (SQLException e) {
             System.err.println("Error in clearing table " + e.getMessage());
