@@ -1,7 +1,7 @@
 package projects.notes;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
@@ -9,40 +9,44 @@ import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SQLiteConnectorTest {
+public class SQLiteConnectorTest {
 
-    private static Connection connection;
+    private Connection connection;
 
-    @BeforeAll
-    static void setUp() {
-//        Establish connection before running tests
+    @BeforeEach
+    public void setUp() {
+        // Initializing test data.
         connection = SQLiteConnector.connect();
     }
 
-    @AfterAll
-    static void tearDown() {
-//        Close connection after running tests
+    @AfterEach
+    public void tearDown() {
+        // Cleaning up resources.
         SQLiteConnector.disconnect(connection);
     }
 
     @Test
-    void testDatabaseConnection() {
-        assertNotNull(connection, "Connection should be not null");
-        try {
-            assertFalse(connection.isClosed(), "Connection should be open");
-        } catch (SQLException e) {
-            fail("Exception occurred while checking connection status: " + e.getMessage());
-        }
+    public void testConnect() {
+        assertNotNull(connection, "Connection should not be null");
+        assertTrue(isConnected(connection), "Connection should be open");
     }
 
     @Test
-    void testDatabaseDisconnect() {
-//        Ensure that disconnect closes the connection
+    public void testDisconnect() {
         SQLiteConnector.disconnect(connection);
+        assertFalse(isConnected(connection), "Connection should be closed");
+    }
+
+    @Test
+    public void testDisconnectWithNullConnection() {
+        assertDoesNotThrow(() -> SQLiteConnector.disconnect(null), "Disconnecting null connection should not throw an exception");
+    }
+
+    private boolean isConnected(Connection connection) {
         try {
-            assertTrue(connection.isClosed(), "Connection should be closed");
+            return connection != null && !connection.isClosed();
         } catch (SQLException e) {
-            fail("Exception occurred while closing the connection: " + e.getMessage());
+            throw new RuntimeException("Error checking connection status");
         }
     }
 }

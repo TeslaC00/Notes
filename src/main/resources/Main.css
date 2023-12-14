@@ -20,16 +20,16 @@
     -fx-focus-color: transparent;
 }
 
-#notesChoiceBox{
-    -fx-background-color: lightgray;
+#notesComboBox {
+    -fx-background-color: yellow;
 }
 
-#notesChoiceBox .list-cell{
+#notesComboBox .list-cell {
     -fx-text-fill: black;
     -fx-font-size: 10pt;
 }
 
-#notesChoiceBox .list-cell:hover{
+#notesComboBox .list-cell:hover {
     -fx-background-color: white;
 }
 
@@ -38,7 +38,7 @@
     -fx-background-color: transparent;
 }
 
-#deleteNoteButton:hover{
+#deleteNoteButton:hover {
     -fx-background-color: gray;
 }
 
@@ -47,7 +47,7 @@
     -fx-background-color: transparent;
 }
 
-#addNoteButton:hover{
+#addNoteButton:hover {
     -fx-background-color: green;
 }
 

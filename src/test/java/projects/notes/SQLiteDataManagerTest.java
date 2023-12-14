@@ -2,40 +2,57 @@ package projects.notes;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class SQLiteDataManagerTest {
-    private SQLiteDataManager sqLiteDataManager;
-    private ObservableList<Note> testNotes;
+public class SQLiteDataManagerTest {
 
-    @BeforeEach
-    void setUp() {
-        sqLiteDataManager = new SQLiteDataManager();
-        testNotes = createTestNotes();
+    private static SQLiteDataManager dataManager;
+
+    @BeforeAll
+    public static void setUp() {
+        // Connect to the test database and create the table
+        dataManager = new SQLiteDataManager();
     }
 
-    @AfterEach
-    void tearDown() {
-        sqLiteDataManager.closeConnection();
+    @AfterAll
+    public static void tearDown() {
+        // Disconnect from the test database
+        dataManager.closeConnection();
     }
 
     @Test
     public void testSaveAndLoadNotes() {
-        sqLiteDataManager.saveNotes(testNotes);
-        ObservableList<Note> loadedNotes = sqLiteDataManager.loadNotes();
-        assertEquals(testNotes, loadedNotes);
+        ObservableList<Note> originalNotes = FXCollections.observableArrayList(
+                new Note("Title1", "Content1"),
+                new Note("Title2", "Content2")
+        );
+
+        // Save the original notes
+        dataManager.saveNotes(originalNotes);
+
+        // Load the notes from the database
+        ObservableList<Note> loadedNotes = dataManager.loadNotes();
+
+        // Assert that the loaded notes match the original notes
+        assertEquals(originalNotes, loadedNotes, "Saved and loaded notes should be equal");
     }
 
-    private ObservableList<Note> createTestNotes() {
-        ObservableList<Note> notes = FXCollections.observableArrayList();
-        notes.add(new Note("Test Note 1", "Test Content 1"));
-        notes.add(new Note("Test Note 2", "Test Content 2"));
-        notes.add(new Note("Test Note 3", "Test Content 3"));
-        return notes;
-    }
+    @Test
+    public void testSaveAndLoadEmptyNotes() {
+        ObservableList<Note> originalNotes = FXCollections.observableArrayList();
 
+        // Save the original empty notes
+        dataManager.saveNotes(originalNotes);
+
+        // Load the notes from the database
+        ObservableList<Note> loadedNotes = dataManager.loadNotes();
+
+        // Assert that the loaded notes are empty
+        assertTrue(loadedNotes.isEmpty(), "Saved and loaded empty notes should be equal");
+    }
 }

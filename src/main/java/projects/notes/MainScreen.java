@@ -12,18 +12,15 @@ import java.util.ResourceBundle;
 
 public class MainScreen implements Initializable {
 
-
     public TextArea mainTextArea;
     public Button closeButton;
     public TextField titleTextField;
     public Button deleteNoteButton;
     public Button addNoteButton;
-
     public ComboBox<Note> notesComboBox;
     private DataManager dataManager;
     private ObservableList<Note> notes;
     private AutoSaver autoSaver;
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -43,7 +40,6 @@ public class MainScreen implements Initializable {
             note.setTitle(titleTextField.getText());
             note.setContent(mainTextArea.getText());
         }
-
         System.err.println("Auto saved");
     }
 
