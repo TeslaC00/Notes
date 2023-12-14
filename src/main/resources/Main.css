@@ -20,20 +20,16 @@
     -fx-focus-color: transparent;
 }
 
-#notesComboBox{
-    -fx-background-color: yellow;
-    -fx-font-size: 12pt;
-    -fx-text-fill: darkblue;
+#notesChoiceBox{
+    -fx-background-color: lightgray;
 }
 
-#notesComboBox .list-cell{
-    -fx-background-color: yellow;
+#notesChoiceBox .list-cell{
+    -fx-text-fill: black;
     -fx-font-size: 10pt;
-    -fx-text-fill: darkblue;
-
 }
 
-#notesComboBox .list-cell:hover{
+#notesChoiceBox .list-cell:hover{
     -fx-background-color: white;
 }
 

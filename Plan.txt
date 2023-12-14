@@ -16,3 +16,4 @@ What to do when there is no title and only description:
 Later :-
 When auto-save then add new note if this note is not saved previously
 When select a note from already created then adding new note creates a copy of that note (Problem)
+

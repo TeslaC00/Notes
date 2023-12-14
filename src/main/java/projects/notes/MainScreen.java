@@ -3,7 +3,7 @@ package projects.notes;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -12,11 +12,13 @@ import java.util.ResourceBundle;
 
 public class MainScreen implements Initializable {
 
+
     public TextArea mainTextArea;
     public Button closeButton;
     public TextField titleTextField;
     public Button deleteNoteButton;
     public Button addNoteButton;
+
     public ComboBox<Note> notesComboBox;
     private DataManager dataManager;
     private ObservableList<Note> notes;
@@ -41,6 +43,7 @@ public class MainScreen implements Initializable {
             note.setTitle(titleTextField.getText());
             note.setContent(mainTextArea.getText());
         }
+
         System.err.println("Auto saved");
     }
 
