@@ -7,10 +7,16 @@ import java.sql.*;
 
 public class SQLiteDataManager implements DataManager {
 
+    public static final String INSERT_NOTES_TITLE_CONTENT_VALUES = "INSERT INTO notes(title,content) Values(?,?)";
+    public static final String SELECT_FROM_NOTES = "SELECT * FROM notes";
+    public static final String CREATE_TABLE_IF_NOT_EXISTS_NOTES_TITLE_CONTENT = "CREATE TABLE IF NOT EXISTS notes(title TEXT, content TEXT)";
+    @SuppressWarnings("SqlWithoutWhere")
+    public static final String DELETE_FROM_NOTES = "DELETE FROM notes";
+    private static final String URL = "jdbc:sqlite:database.db";
     private final Connection connection;
 
     public SQLiteDataManager() {
-        connection = SQLiteConnector.connect();
+        connection = SQLiteConnector.connect(URL);
         createTable();
     }
 
@@ -21,8 +27,7 @@ public class SQLiteDataManager implements DataManager {
             clearTable();
 
 //            Save new data
-            String sql = "INSERT INTO notes(title,content) Values(?,?)";
-            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            try (PreparedStatement statement = connection.prepareStatement(INSERT_NOTES_TITLE_CONTENT_VALUES)) {
                 for (Note note : notes) {
                     statement.setString(1, note.getTitle());
                     statement.setString(2, note.getContent());
@@ -30,7 +35,9 @@ public class SQLiteDataManager implements DataManager {
                 }
             }
         } catch (SQLException e) {
-            System.err.println("Error in saving notes " + e.getMessage());
+            throw new RuntimeException("Error in saving notes: ", e);
+        } finally {
+            closeConnection();
         }
     }
 
@@ -38,8 +45,7 @@ public class SQLiteDataManager implements DataManager {
     public ObservableList<Note> loadNotes() {
         ObservableList<Note> notes = FXCollections.observableArrayList();
         try {
-            String sql = "SELECT * FROM notes";
-            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            try (PreparedStatement statement = connection.prepareStatement(SELECT_FROM_NOTES)) {
                 ResultSet resultSet = statement.executeQuery();
 
                 while (resultSet.next()) {
@@ -49,26 +55,24 @@ public class SQLiteDataManager implements DataManager {
                 }
             }
         } catch (SQLException e) {
-            System.out.println("Error in loading data from database " + e.getMessage());
+            System.out.println("Error in loading data from database: " + e.getMessage());
         }
         return notes;
     }
 
     private void createTable() {
         try (Statement statement = connection.createStatement()) {
-            String sql = "CREATE TABLE IF NOT EXISTS notes(title TEXT, content TEXT)";
-            statement.executeUpdate(sql);
+            statement.executeUpdate(CREATE_TABLE_IF_NOT_EXISTS_NOTES_TITLE_CONTENT);
         } catch (SQLException e) {
-            System.err.println("Error in creating table " + e.getMessage());
+            System.err.println("Error in creating table: " + e.getMessage());
         }
     }
 
     private void clearTable() {
         try (Statement statement = connection.createStatement()) {
-            @SuppressWarnings("SqlWithoutWhere") String sql = "DELETE FROM notes";
-            statement.executeUpdate(sql);
+            statement.executeUpdate(DELETE_FROM_NOTES);
         } catch (SQLException e) {
-            System.err.println("Error in clearing table " + e.getMessage());
+            System.err.println("Error in clearing table: " + e.getMessage());
         }
     }
 

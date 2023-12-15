@@ -6,14 +6,17 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class SQLiteConnector {
-    private static final String URL = "jdbc:sqlite:database.db";
 
-    public static Connection connect() {
+    public static Connection connect(String databaseUrl) {
         try {
             Class.forName("org.sqlite.JDBC");
-            return DriverManager.getConnection(URL);
-        } catch (ClassNotFoundException | SQLException e) {
-            throw new RuntimeException("Error connecting to database");
+            return DriverManager.getConnection(databaseUrl);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("JDBC class not found: ", e);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error connecting to database: ", e);
+        } catch (Exception e) {
+            throw new RuntimeException("Unexpected Error occurred: ", e);
         }
     }
 
@@ -23,7 +26,9 @@ public class SQLiteConnector {
                 connection.close();
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Error disconnecting the database");
+            throw new RuntimeException("Error disconnecting the database: ", e);
+        } catch (Exception e) {
+            throw new RuntimeException("Unexpected Error occurred: ", e);
         }
     }
 }

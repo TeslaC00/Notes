@@ -11,12 +11,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SQLiteConnectorTest {
 
+    private static final String URL = "jdbc:sqlite:database.db";
     private Connection connection;
 
     @BeforeEach
     public void setUp() {
         // Initializing test data.
-        connection = SQLiteConnector.connect();
+        connection = SQLiteConnector.connect(URL);
     }
 
     @AfterEach

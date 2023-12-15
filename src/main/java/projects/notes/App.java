@@ -8,6 +8,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.IOException;
+
 public class App extends Application {
 
     private static Stage stage;
@@ -22,16 +24,26 @@ public class App extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         stage = primaryStage;
-        Parent root = new FXMLLoader(getClass().getResource("/Main.fxml")).load();
-        makeWindowDraggable(root);
-        Scene scene = new Scene(root);
-        stage.initStyle(StageStyle.TRANSPARENT);
-        scene.setFill(Color.TRANSPARENT);
-        stage.setResizable(false);
-        stage.setScene(scene);
-        stage.show();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Main.fxml"));
+            DataManager dataManager = new SQLiteDataManager();
+            MainScreenController mainScreenController = new MainScreenController(dataManager);
+            loader.setController(mainScreenController);
+            Parent root = loader.load();
+            makeWindowDraggable(root);
+            Scene scene = new Scene(root);
+            stage.initStyle(StageStyle.TRANSPARENT);
+            scene.setFill(Color.TRANSPARENT);
+            stage.setResizable(false);
+            stage.setScene(scene);
+            stage.show();
+        } catch (NullPointerException n) {
+            System.err.println("Error in locating the fxml file: " + n.getMessage());
+        } catch (IOException e) {
+            System.err.println("Error in loading fxml: " + e.getMessage());
+        }
     }
 
     private void makeWindowDraggable(Parent root) {
