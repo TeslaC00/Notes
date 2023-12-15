@@ -1,19 +1,20 @@
 Done :-
-Yellow color in the background
-"Notes ~~~" show be displayed in cursive on plain notes page
-Close Button
-Save and load note(only one note)
-Multiple notes
-List of notes
-Save and load multiple notes
-Add check to not add new note if title and description are both empty
+    Yellow color in the background
+    "Notes ~~~" show be displayed in cursive on plain notes page
+    Close Button
+    Save and load note (only one note)
+    Multiple notes
+    List of notes
+    Save and load multiple notes
+    Add check to not add new note if title and description are both empty
+    Added Database for storing and retrieving notes
+    Added catch for a lot of exceptions
+    When auto-save then add new note if this note is not saved previously
+    When select a note from already created then adding new note creates a copy of that note (Problem)
 
 Current :-
-What to do when there is no title and only description:
-	force user to give title
-	generate a title based on description
 
 Later :-
-When auto-save then add new note if this note is not saved previously
-When select a note from already created then adding new note creates a copy of that note (Problem)
-
+    What to do when there is no title and only description:
+	    force user to give title
+	    generate a title based on description

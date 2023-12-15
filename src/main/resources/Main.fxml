@@ -4,8 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="500.0" prefWidth="400.0" styleClass="main"
-            stylesheets="@Main.css" xmlns="http://javafx.com/javafx/20.0.1"
-            fx:controller="projects.notes.MainScreen">
+            stylesheets="@Main.css" xmlns="http://javafx.com/javafx/20.0.1">
     <TextArea id="mainTextArea" fx:id="mainTextArea" layoutY="4.0" prefHeight="400.0" prefWidth="400.0" wrapText="true"
               AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
     </TextArea>
